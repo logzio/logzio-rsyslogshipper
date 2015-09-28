@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function cleanup() {
-	echo "stoping rsyslog, bay bay..."
+	echo "stoping rsyslog, Bye bye..."
 	ps -A | grep /usr/sbin/rsyslogd | head -1 | awk '{print $1}' | xargs kill
 }
 
