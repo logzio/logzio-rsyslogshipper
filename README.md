@@ -18,6 +18,11 @@ The following environment variables are available:
 	A valid Logz.io customer authentication token. (required)
 
 
+**LISTENER_HOST**
+
+	The Logz.io listener address. (optional)
+
+
 **MONITOR_FILE_TYPE**
 
 	The log type that is being sent. This enables better parsing of your log data. (required)
