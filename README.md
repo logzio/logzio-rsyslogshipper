@@ -59,10 +59,11 @@ docker run \
 	--name rsyslog-shipper \
 	-v /PATH/TO/FOLDER:/var/log/logzio \
 	-e LOGZIO_USER_TOKEN="USER_TOKEN" \
+	-e LISTENER_HOST="LISTENER_ADDRESS" \
 	-e MONITOR_FILE_PATH="PATH_TO_LOG_FILE" \
 	-e MONITOR_FILE_TYPE="FILE_TYPE" \
 	-e CODEC="FILE_CODEC" \
-	registry.internal.logz.io:5000/logzio-rsyslog-shipper:latest
+	logzio/logzio-rsyslog-shipper:latest
 ```
 
 
@@ -78,8 +79,9 @@ docker run \
 	--name rsyslog-shipper \
 	-v /var/logs/apache2:/var/log/logzio \
 	-e LOGZIO_USER_TOKEN="USER_TOKEN" \
+	-e LISTENER_HOST="listener.logz.io" \
 	-e MONITOR_FILE_TYPE="apache" \
-	registry.internal.logz.io:5000/logzio-rsyslog-shipper:latest
+	logzio/logzio-rsyslog-shipper:latest
 ```
 
 
@@ -94,9 +96,10 @@ docker run \
 	--name rsyslog-shipper \
 	-v /home/ubuntu/myapp:/var/log/logzio \
 	-e LOGZIO_USER_TOKEN="USER_TOKEN" \
+	-e LISTENER_HOST="listener-eu.logz.io" \
 	-e MONITOR_FILE_PATH="logs/*.json" \
 	-e MONITOR_FILE_TYPE="myapp" \
 	-e CODEC="json" \
-	registry.internal.logz.io:5000/logzio-rsyslog-shipper:latest
+	logzio/logzio-rsyslog-shipper:latest
 ```
 
