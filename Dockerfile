@@ -11,5 +11,6 @@ EXPOSE 514/tcp 514/udp
 
 ADD scripts/* /root/
 ADD files/* /root/files/
+COPY rsyslog.conf /etc/rsyslog.conf
 
 ENTRYPOINT /root/go.bash
