@@ -35,6 +35,12 @@ The following environment variables are available:
 	The path can be to a single file or directory. wildcards are allowed only on the file name. 
 	for more details please see Rsyslog documentation 
 
+**SHARED_DIR**
+
+    The path to use as the shared directory for logzio. This must be a **absolute** path.
+    This path has the **MONITOR_FILE_PATH** variable appended to it when searching for logs.
+    By default, this is `/var/log/logzio`.
+
 **CODEC**
 
 	The file content codec, currntly support text and json, Default to text.
@@ -86,7 +92,7 @@ docker run \
 
 
 
-This example monitor the myapp log files, The path to the files is **relative to the mounted folder**. 
+This example monitor the myapp log files, The path to the files is **relative to the SHARED_DIR variable.**
 
 All file are assumed to be a json log files.
 
@@ -99,6 +105,22 @@ docker run \
 	-e LISTENER_HOST="listener-eu.logz.io" \
 	-e MONITOR_FILE_PATH="logs/*.json" \
 	-e MONITOR_FILE_TYPE="myapp" \
+	-e CODEC="json" \
+	logzio/logzio-rsyslog-shipper:latest
+```
+
+All files are within a different shared folder.
+
+``` bash
+docker run \
+	-d \
+	--name rsyslog-shipper \
+	-v /home/ubuntu/myapp:/var/log/mylogs \
+	-e LOGZIO_USER_TOKEN="USER_TOKEN" \
+	-e LISTENER_HOST="listener-eu.logz.io" \
+	-e MONITOR_FILE_PATH="logs/*.json" \
+	-e MONITOR_FILE_TYPE="myapp" \
+    -e SHARED_DIR="/var/log/mylogs" \
 	-e CODEC="json" \
 	logzio/logzio-rsyslog-shipper:latest
 ```
