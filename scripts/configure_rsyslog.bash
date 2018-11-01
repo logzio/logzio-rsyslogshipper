@@ -14,27 +14,31 @@ RSYSLOG_CONF_DIR="/etc/rsyslog.d"
 # Logzio conf's directory path
 LOGZ_CONF_DIR="/root/files"
 
-# Logzio - shared directory
-LOGZ_SHARED_DIR="/var/log/logzio"
-
 # the user's authentication token, this is a mandatory input
 USER_TOKEN=${1}
+
+# Logzio - shared directory
+LOGZ_SHARED_DIR=${2}
+
+if [[ $LOGZ_SHARED_DIR == "" ]]; then
+    LOGZ_SHARED_DIR="/var/log/logzio"
+fi
 
 # The log file path
 FILE_PATH=${LOGZ_SHARED_DIR}
 
-if [[ ! -z "${2}" ]]; then
-	FILE_PATH=${LOGZ_SHARED_DIR}/${2}
+if [[ ! -z "${3}" ]]; then
+	FILE_PATH=${LOGZ_SHARED_DIR}/${3}
 fi
 
 # The log file type
-FILE_TAG=${3}
+FILE_TAG=${4}
 
 # The log file content
-FILE_CONTENT=${4}
+FILE_CONTENT=${5}
 
 # Configure listener protocol
-LISTENER_PROTOCOL=${5}
+LISTENER_PROTOCOL=${6}
 
 # Logzio - spool directory
 LOGZ_SPOOL_DIR="${LOGZ_SHARED_DIR}/spool/rsyslog"

@@ -21,7 +21,7 @@ if [[ $MONITOR_FILE_TYPE == "" ]]; then
 fi
 
 # configure rsyslog && start service in background
-/root/configure_rsyslog.bash "${LOGZIO_USER_TOKEN}" "${MONITOR_FILE_PATH}" "${MONITOR_FILE_TYPE}" "${CODEC}" 
+/root/configure_rsyslog.bash "${LOGZIO_USER_TOKEN}" "${SHARED_DIR}" "${MONITOR_FILE_PATH}" "${MONITOR_FILE_TYPE}" "${CODEC}" 
 
 #if [[ $MONITOR_CONF_FILE_PATH == "" ]]; then
 #	# configure rsyslog && start service in background
@@ -44,4 +44,3 @@ done
 
 # stop service
 cleanup
-
